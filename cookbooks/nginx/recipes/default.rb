@@ -65,3 +65,16 @@ template "passenger.conf" do
   notifies :reload, resources(:service => "nginx")
 end
 
+bash "Tidy up" do
+ user "root"
+ code <--EOH
+ mkdir -p /var/log/nginx
+ cd /var/log/nginx
+ touch access.log
+ touch error.log
+ cd /home/ubuntu/.rvm/gems/ruby-1.9.3-p429/gems/passenger-4.0.5
+ rvmsudo rake nginx
+ EOH
+end
+ 
+
