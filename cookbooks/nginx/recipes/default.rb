@@ -1,3 +1,6 @@
+package "libcurl4-openssl-dev"
+
+
 bash "Extract and install nginx" do
 user "root"
 code <<-EOH
