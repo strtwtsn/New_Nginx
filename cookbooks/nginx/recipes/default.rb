@@ -28,28 +28,24 @@ template "nginx.conf" do
   source "nginx.conf.erb"
   owner "root"
   group "root"
-  mode 0644
   notifies :reload, resources(:service => "nginx")
 end
 
 directory "/etc/nginx/sites-available" do
 owner "root"
 group "root"
-mode 0644
 action :create
 end
 
 directory "/etc/nginx/sites-enabled" do
 owner "root"
 group "root"
-mode 0644
 action :create
 end
 
 directory "/var/www" do
 owner "root"
 group "root"
-mode 0644
 action :create
 end
 
@@ -57,7 +53,6 @@ end
 directory "/etc/nginx/conf.d" do
 owner "root"
 group "root"
-mode 0644
 action :create
 end
 
@@ -67,7 +62,6 @@ template "passenger.conf" do
   source "passenger.conf.erb"
   owner "root"
   group "root"
-  mode 0644
   notifies :reload, resources(:service => "nginx")
 end
 
